@@ -34,8 +34,14 @@ class ChessGame(tk.Tk):
                 self.selected_piece = (row, col)
         else:
             self.move_piece(row, col)
+            
+    def move_piece(self, row, col):
+        selected_row, selected_col = self.selected_piece
+        piece = self.board[selected_row][selected_col]
+        self.board[selected_row][selected_col] = ' '
+        self.board[row][col] = piece
+        self.selected_piece = None
+        self.refresh_board()
                 
-
-    
 chess_game = ChessGame()
 chess_game.mainloop()
